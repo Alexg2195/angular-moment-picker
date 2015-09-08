@@ -7,7 +7,8 @@ var $ = require('gulp-load-plugins')();
 
 module.exports = function(options) {
   gulp.task('scripts', function () {
-    return gulp.src(options.src + '/{app,components}/**/*.js')
+    return gulp.src(options.src + '/**/*.js')
+        .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'))
       .pipe($.jshint())
       .pipe($.jshint.reporter('jshint-stylish'))
       .pipe(browserSync.reload({ stream: true }))
