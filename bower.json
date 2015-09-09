@@ -2,6 +2,7 @@
   "name": "angular-moment-picker",
   "license": "MIT",
   "version": "0.0.1",
+  "authors": ["Alan Jhonnes <aj@alanjhonnes.com>"],
   "main": [
     "dist/angular-moment-picker.js",
     "dist/angular-moment-picker.css"
@@ -9,12 +10,17 @@
   "ignore": [
     ".gitignore",
     "README.md",
-    "app",
-    "circle.yml",
+    "gulp",
+    "gulp-excluded",
     ".travis.yml",
     "test",
+    "js",
+    "styles",
     ".editorconfig",
     ".jshintrc",
+    "moment.html",
+    "protractor.conf.js",
+    "node_modules",
     "karma-e2e.conf.js",
     "karma.conf.js",
     "package.json"

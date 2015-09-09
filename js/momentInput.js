@@ -77,7 +77,7 @@ Module.directive('momentTime', ['$compile', '$document', '$filter', 'momentTimeC
           var minVal = momentUtils.createMoment(attrs.minMoment, local);
 
           ngModel.$validators.min = function (value) {
-            return !momentUtils.isValidDate(value) || angular.isUndefined(minVal) || value >= minVal;
+            return !momentUtils.isValidDate(value) || angular.isUndefined(minVal) || value.isSame(minVal) || value.isAfter(minVal);
           };
           attrs.$observe('minMoment', function (val) {
             minVal = momentUtils.createMoment(val, local);
@@ -88,7 +88,7 @@ Module.directive('momentTime', ['$compile', '$document', '$filter', 'momentTimeC
         if (angular.isDefined(attrs.maxMoment)) {
           var maxVal = new Date(attrs.maxMoment);
           ngModel.$validators.max = function (value) {
-            return !momentUtils.isValidDate(value) || angular.isUndefined(maxVal) || value <= maxVal;
+            return !momentUtils.isValidDate(value) || angular.isUndefined(maxVal) || value.isSame(maxVal) || value.isBefore(maxVal);
           };
           attrs.$observe('maxMoment', function (val) {
             maxVal = momentUtils.createMoment(val, local);

@@ -56,8 +56,8 @@ angular.module('momentPicker')
                     before: '=?',
                     minView: '@?',
                     maxView: '@?',
-                    minDate: '=?',
-                    maxDate: '=?',
+                    minMoment: '=?',
+                    maxMoment: '=?',
                     local: '=?'
                 },
                 link: function (scope, element, attrs, ngModel) {
@@ -77,23 +77,23 @@ angular.module('momentPicker')
 
                     //if ngModel, we can add min and max validators
                     if (ngModel) {
-                        if (angular.isDefined(scope.minDate)) {
+                        if (angular.isDefined(scope.minMoment)) {
                             var minVal;
                             ngModel.$validators.min = function (value) {
-                                return !momentUtils.isValidDate(value) || angular.isUndefined(minVal) || value >= minVal;
+                                return !momentUtils.isValidDate(value) || angular.isUndefined(minVal) || value.isSame(minVal) || value.isAfter(minVal);
                             };
-                            scope.$watch('minDate', function (val) {
+                            scope.$watch('minMoment', function (val) {
                                 minVal = val;
                                 ngModel.$validate();
                             });
                         }
 
-                        if (angular.isDefined(scope.maxDate)) {
+                        if (angular.isDefined(scope.maxMoment)) {
                             var maxVal;
                             ngModel.$validators.max = function (value) {
-                                return !momentUtils.isValidDate(value) || angular.isUndefined(maxVal) || value <= maxVal;
+                                return !momentUtils.isValidDate(value) || angular.isUndefined(maxVal) || value.isSame(maxVal) || value.isBefore(maxVal);
                             };
-                            scope.$watch('maxDate', function (val) {
+                            scope.$watch('maxMoment', function (val) {
                                 maxVal = val;
                                 ngModel.$validate();
                             });
