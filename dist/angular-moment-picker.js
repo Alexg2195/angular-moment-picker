@@ -202,8 +202,8 @@ angular.module('momentPicker')
                     before: '=?',
                     minView: '@?',
                     maxView: '@?',
-                    minDate: '=?',
-                    maxDate: '=?',
+                    minMoment: '=?',
+                    maxMoment: '=?',
                     local: '=?'
                 },
                 link: function (scope, element, attrs, ngModel) {
@@ -223,23 +223,23 @@ angular.module('momentPicker')
 
                     //if ngModel, we can add min and max validators
                     if (ngModel) {
-                        if (angular.isDefined(scope.minDate)) {
+                        if (angular.isDefined(scope.minMoment)) {
                             var minVal;
                             ngModel.$validators.min = function (value) {
-                                return !momentUtils.isValidDate(value) || angular.isUndefined(minVal) || value >= minVal;
+                                return !momentUtils.isValidDate(value) || angular.isUndefined(minVal) || value.isSame(minVal) || value.isAfter(minVal);
                             };
-                            scope.$watch('minDate', function (val) {
+                            scope.$watch('minMoment', function (val) {
                                 minVal = val;
                                 ngModel.$validate();
                             });
                         }
 
-                        if (angular.isDefined(scope.maxDate)) {
+                        if (angular.isDefined(scope.maxMoment)) {
                             var maxVal;
                             ngModel.$validators.max = function (value) {
-                                return !momentUtils.isValidDate(value) || angular.isUndefined(maxVal) || value <= maxVal;
+                                return !momentUtils.isValidDate(value) || angular.isUndefined(maxVal) || value.isSame(maxVal) || value.isBefore(maxVal);
                             };
-                            scope.$watch('maxDate', function (val) {
+                            scope.$watch('maxMoment', function (val) {
                                 maxVal = val;
                                 ngModel.$validate();
                             });
@@ -432,6 +432,7 @@ angular.module('momentPicker')
                 }
             };
         }]);
+
 'use strict';
 
 var PRISTINE_CLASS = 'ng-pristine',
@@ -511,7 +512,7 @@ Module.directive('momentTime', ['$compile', '$document', '$filter', 'momentTimeC
           var minVal = momentUtils.createMoment(attrs.minMoment, local);
 
           ngModel.$validators.min = function (value) {
-            return !momentUtils.isValidDate(value) || angular.isUndefined(minVal) || value >= minVal;
+            return !momentUtils.isValidDate(value) || angular.isUndefined(minVal) || value.isSame(minVal) || value.isAfter(minVal);
           };
           attrs.$observe('minMoment', function (val) {
             minVal = momentUtils.createMoment(val, local);
@@ -522,7 +523,7 @@ Module.directive('momentTime', ['$compile', '$document', '$filter', 'momentTimeC
         if (angular.isDefined(attrs.maxMoment)) {
           var maxVal = new Date(attrs.maxMoment);
           ngModel.$validators.max = function (value) {
-            return !momentUtils.isValidDate(value) || angular.isUndefined(maxVal) || value <= maxVal;
+            return !momentUtils.isValidDate(value) || angular.isUndefined(maxVal) || value.isSame(maxVal) || value.isBefore(maxVal);
           };
           attrs.$observe('maxMoment', function (val) {
             maxVal = momentUtils.createMoment(val, local);
