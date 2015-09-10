@@ -21,8 +21,6 @@ module.exports = function(options) {
 
     return gulp.src([options.src + '/**/*.js', '!' + options.src + '/**/*.spec.js'])
       .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'))
-      //.pipe($.jshint())
-      //.pipe($.jshint.reporter('jshint-stylish'))
       .pipe(concat('angular-moment-picker.js'))
       .pipe($.size())
       .pipe(gulp.dest(options.dist));
