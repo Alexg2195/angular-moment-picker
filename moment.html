@@ -11,7 +11,7 @@
 
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <!--<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>-->
     <!--<script src="js/momentPicker.mdl.js"></script>-->
     <!--<script src="js/momentPicker.js"></script>-->
     <!--<script src="js/momentUtils.js"></script>-->
@@ -19,7 +19,7 @@
     <script src="dist/angular-moment-picker.js"></script>
 
     <script>
-        angular.module('sample', ['momentPicker', 'ui.bootstrap'])
+        angular.module('sample', ['momentPicker'])
                 .controller('TestCtrl', ['$scope', 'momentUtils', function ($scope, momentUtils) {
                     var vm = this;
                     vm.now = moment();
