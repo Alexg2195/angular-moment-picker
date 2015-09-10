@@ -114,25 +114,46 @@ angular.module('momentPicker').factory('momentUtils', ['moment', function (momen
     },
 
     isAfter: function (model, date, local) {
-      return model.isAfter(this.createMoment(date, local));
+      if(this.isValidDate(model)){
+        return model.isAfter(this.createMoment(date, local));
+      }
+      return false;
     },
     isBefore: function (model, date, local) {
-      return model.isBefore(this.createMoment(date, local));
+      if(this.isValidDate(model)){
+        return model.isBefore(this.createMoment(date, local));
+      }
+      return false;
     },
     isSameYear: function (model, date, local) {
-      return model.isSame(this.createMoment(date, local), 'year');
+      if(this.isValidDate(model)){
+        return model.isSame(this.createMoment(date, local), 'year');
+      }
+      return false;
     },
     isSameMonth: function (model, date, local) {
-      return  model.isSame(this.createMoment(date, local), 'month');
+      if(this.isValidDate(model)){
+        return  model.isSame(this.createMoment(date, local), 'month');
+      }
+      return false;
     },
     isSameDay: function (model, date, local) {
-      return model.isSame(this.createMoment(date, local), 'day');
+      if(this.isValidDate(model)){
+        return model.isSame(this.createMoment(date, local), 'day');
+      }
+      return false;
     },
     isSameHour: function (model, date, local) {
-      return  model.isSame(this.createMoment(date, local), 'hour');
+      if(this.isValidDate(model)){
+        return  model.isSame(this.createMoment(date, local), 'hour');
+      }
+      return false;
     },
     isSameMinutes: function (model, date, local) {
-      return model.isSame(this.createMoment(date, local), 'minute');
+      if(this.isValidDate(model)){
+        return model.isSame(this.createMoment(date, local), 'minute');
+      }
+      return false;
     },
     isValidDate: function (value) {
       return moment.isMoment(value);
