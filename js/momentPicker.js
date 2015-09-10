@@ -10,34 +10,51 @@ angular.module('momentPicker')
     })
     .filter('moment', ['moment', function (moment) {
         return function (input, format) {
-            if (moment.isMoment(input)) {
-                return input.format(format);
+            if(input){
+                if (moment.isMoment(input)) {
+                    return input.format(format);
+                }
+                else {
+                    return 'Invalid moment';
+                }
             }
             else {
-                return 'Invalid moment';
+                return '';
             }
+
         }
     }])
 
     .filter('momentUTC', ['moment', function (moment) {
         return function (input, format) {
-            if (moment.isMoment(input)) {
-                var m = moment(input).utc();
-                return m.format(format);
+            if(input){
+                if (moment.isMoment(input)) {
+                    var m = moment(input).utc();
+                    return m.format(format);
+                }
+                else {
+                    return 'Invalid moment';
+                }
             }
             else {
-                return 'Invalid moment';
+                return '';
             }
+
         }
     }])
     .filter('momentLocal', ['moment', function (moment) {
         return function (input, format) {
-            if (moment.isMoment(input)) {
-                var m = moment(input).local();
-                return m.format(format);
+            if(input){
+                if (moment.isMoment(input)) {
+                    var m = moment(input).local();
+                    return m.format(format);
+                }
+                else {
+                    return 'Invalid moment';
+                }
             }
             else {
-                return 'Invalid moment';
+                return '';
             }
         }
     }])
