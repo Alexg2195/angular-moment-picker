@@ -7,8 +7,26 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href=""/>
-    <link rel="stylesheet" href="styles/moment.css"/>
+    <link rel="stylesheet" href="dist/angular-moment-picker.css"/>
+
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <!--<script src="js/momentPicker.mdl.js"></script>-->
+    <!--<script src="js/momentPicker.js"></script>-->
+    <!--<script src="js/momentUtils.js"></script>-->
+    <!--<script src="js/momentInput.js"></script>-->
+    <script src="dist/angular-moment-picker.js"></script>
+
+    <script>
+        angular.module('sample', ['momentPicker', 'ui.bootstrap'])
+                .controller('TestCtrl', ['$scope', 'momentUtils', function ($scope, momentUtils) {
+                    var vm = this;
+                    vm.now = moment();
+                    vm.endTime = moment();
+                    vm.offset = moment(new Date()).format('ZZ');
+                }]);
+    </script>
 </head>
 <body ng-app="sample">
 <div class="container">
@@ -78,22 +96,5 @@
 </div>
 
 
-<script src="bower_components/moment/moment.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-<script src="js/momentPicker.mdl.js"></script>
-<script src="js/momentPicker.js"></script>
-<script src="js/momentUtils.js"></script>
-<script src="js/momentInput.js"></script>
-
-<script>
-    angular.module('sample', ['momentPicker', 'ui.bootstrap'])
-            .controller('TestCtrl', ['$scope', 'momentUtils', function ($scope, momentUtils) {
-                var vm = this;
-                vm.now = moment();
-                vm.endTime = moment();
-                vm.offset = moment(new Date()).format('ZZ');
-            }]);
-</script>
 </body>
 </html>
