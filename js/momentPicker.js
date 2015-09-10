@@ -2,7 +2,7 @@
 
 angular.module('momentPicker')
     .constant('momentPickerConfig', {
-        template: 'js/momentPicker.html',
+        template: 'momentPicker.html',
         view: 'month',
         views: ['year', 'month', 'date', 'hours', 'minutes'],
         step: 5,
