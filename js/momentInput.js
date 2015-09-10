@@ -166,7 +166,7 @@ Module.directive('momentTime', ['$compile', '$document', '$filter', 'momentTimeC
         }
 
         element.bind('focus', showPicker);
-        //element.bind('blur', clear);
+        element.bind('blur', clear);
       }
     };
   }]);
