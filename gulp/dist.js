@@ -7,7 +7,6 @@ var wiredep = require('wiredep');
 var concat = require('gulp-concat');
 var less = require('gulp-less');
 var _ = require('lodash');
-var path = require('path');
 
 
 module.exports = function(options) {
