@@ -1,7 +1,7 @@
 {
   "name": "angular-moment-picker",
   "license": "MIT",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "authors": ["Alan Jhonnes <aj@alanjhonnes.com>"],
   "main": [
     "dist/angular-moment-picker.js",
