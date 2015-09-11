@@ -510,7 +510,8 @@ Module.directive('momentTimeAppend', function () {
 Module.directive('momentTime', ['$compile', '$document', '$filter', 'momentTimeConfig', '$parse', 'momentUtils',
   function ($compile, $document, $filter, momentTimeConfig, $parse, momentUtils) {
     var body = $document.find('body');
-    var dateFilter = $filter('moment');
+    var localFilter = $filter('moment');
+    var utcFilter = $filter('momentUTC');
 
     return {
       require: 'ngModel',
@@ -534,7 +535,12 @@ Module.directive('momentTime', ['$compile', '$document', '$filter', 'momentTimeC
 
 
         function formatter(value) {
-          return dateFilter(value, format);
+          if(local){
+            return localFilter(value, format);
+          }
+          else {
+            return utcFilter(value, format);
+          }
         }
 
         function parser() {
