@@ -47,8 +47,6 @@ angular.module('momentPicker').factory('momentUtils', ['moment', function (momen
       // set date to start of the week
       date.date(1);
 
-      console.log(date.day());
-
       if (date.day() <= 1) {
         // day is sunday or monday, let's get back to the previous week
         date.day(-5);

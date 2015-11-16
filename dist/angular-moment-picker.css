@@ -855,8 +855,7 @@ date-range .moment-picker .after.before.disabled {
 }
 .moment-picker table {
   margin: 0;
-  min-width: 219px;
-  max-width: 219px;
+  min-width: 250px;
 }
 .moment-picker td,
 .moment-picker th {
