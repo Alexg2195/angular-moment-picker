@@ -1,6 +1,6 @@
 {
   "name": "angular-moment-picker",
-  "version": "0.0.1",
+  "version": "0.0.17",
   "main": "dist/angular-moment-picker.js",
   "repository": {
     "url": "https://github.com/alanjhonnes/angular-moment-picker.git"
